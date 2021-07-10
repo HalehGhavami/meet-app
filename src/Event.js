@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { mockData } from './mock-data';
 
 class Event extends Component {
   constructor(props) {
@@ -14,20 +15,22 @@ class Event extends Component {
       expanded: !this.state.expanded,
     });
   }
+
   render() {
+    let event = this.props.event;
     return (
       <div>
-        <h2 className="event-title">{this.props.title}</h2>
+        <h2 className="event-title">{event.title}</h2>
         <div className="basic-info">
-          <span>{this.props.startdate}</span>
-          <span>{this.props.location}</span>
+          <span>{event.startdate}</span>
+          <span>{event.location}</span>
+          {this.state.expanded === true && (
+            <p className="event-details">{event.description}</p>
+          )}
         </div>
         <button className="show-details" onClick={this.toggleExpanded}>
-          Show Details
+          {!this.state.expanded ? 'Show Details' : 'Hide Details'}
         </button>
-        <div
-          className={`row ${this.state.expanded ? 'expanded' : 'normal'}`}
-        ></div>
       </div>
     );
   }
