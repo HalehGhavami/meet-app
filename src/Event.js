@@ -20,10 +20,12 @@ class Event extends Component {
     let event = this.props.event;
     return (
       <div>
-        <h2 className="event-title">{event.title}</h2>
+        <h2 className="event-title">{event.summary}</h2>
         <div className="basic-info">
-          <span>{event.startdate}</span>
-          <span>{event.location}</span>
+          <h2 className="event-location">{event.location}</h2>
+          <h3 className="event-Date">
+            start: {event.start.dateTime} - Time Zone: {event.start.timeZone}
+          </h3>
           {this.state.expanded === true && (
             <p className="event-details">{event.description}</p>
           )}
