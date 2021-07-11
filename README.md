@@ -27,7 +27,6 @@ Key Features:<br>
 
 ### User stories and Gherkin syntax:
 
-
 FEATURE 1: FILTER EVENTS BY CITY<br>
 USER STORY FEATURE 1: As a user, I should be able to filter events by city, so that I can see what is happening where I am located.<br>
 
@@ -43,7 +42,7 @@ Scenario 1: When user hasn’t searched for a city, show upcoming events from al
 ```
 Scenario 2: User should see a list of suggestions when they search for a city.
 
-  
+
 ⦁	Given the main page is open
 ⦁	When user starts typing in the city textbox
 ⦁	Then the user should see a list of cities (suggestions) that match what they’ve typed.
@@ -57,9 +56,9 @@ Scenario 3: User can select a city from the suggested list.
 ⦁	When the user selects a city (e.g., “Berlin, Germany”) from the list
 ⦁	Then their city should be changed to that city (i.e., “Berlin, Germany”) and the user should receive
         a list of upcoming events in that city.
+        And the list of suggestions should disappear.
 
 ```
-
 
 FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS<br>
 USER STORY FEATURE 2: As a user, I should be able to show/hide an event's details, so that I can see what is exactly happening at each event.<br>
@@ -100,7 +99,7 @@ Scenario 1: When user hasn’t specified a number, 32 is the default number.
 ⦁	Given the user hasn't specified the number of events
 ⦁	When the app is loaded
 ⦁	Then the default number of events to load is 32.
- 
+
 ```
 
 ```
@@ -113,7 +112,7 @@ Scenario 2: User can change the number of events they want to see.
 ```
 
 FEATURE 4: USE THE APP WHEN OFFLINE<br>
-USER STORY FEATURE 4: As a user, I should be able to use the app offline, so that  I don’t need internet access to see the events I was viewing previously.<br>
+USER STORY FEATURE 4: As a user, I should be able to use the app offline, so that I don’t need internet access to see the events I was viewing previously.<br>
 
 ```
 Scenario 1: Show cached data when there’s no internet connection.
@@ -142,5 +141,5 @@ Scenario 1: Show a chart with the number of upcoming events in each city.
 ⦁	Given the user has selected to view events in a city
 ⦁	When the user clicks on that city's chart
 ⦁	Then the user should be able to see a graph or chart displaying the number of events in that city.
-  
+
 ```
