@@ -9,22 +9,22 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('render text input', () => {
-    expect(NumberOfEventsWrapper.find('.eventNumber')).toHaveLength(1);
+    expect(NumberOfEventsWrapper.find('.numberOfEvents')).toHaveLength(1);
   });
 
   test('renders text input correctly', () => {
-    const number = NumberOfEventsWrapper.state('number');
-    expect(NumberOfEventsWrapper.find('.eventNumber').prop('value')).toBe(
-      number
-    );
+    const numberOfEvents = NumberOfEventsWrapper.state('numberOfEvents');
+    expect(
+      NumberOfEventsWrapper.find('#numberOfEvents__input').prop('value')
+    ).toBe(numberOfEvents);
   });
 
   test('change state when input changes', () => {
-    NumberOfEventsWrapper.setState({
-      number: 32,
-    });
-    const eventObject = { target: { value: 2 } };
-    NumberOfEventsWrapper.find('.eventNumber').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('number')).toBe(2);
+    const eventObject = { target: { value: 32 } };
+    NumberOfEventsWrapper.find('#numberOfEvents__input').simulate(
+      'change',
+      eventObject
+    );
+    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(32);
   });
 });

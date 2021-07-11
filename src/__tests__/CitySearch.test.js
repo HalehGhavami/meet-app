@@ -9,7 +9,9 @@ describe('<CitySearch /> component', () => {
   beforeAll(() => {
     locations = extractLocations(mockData);
     // locations passed as a prop to the CitySearch component
-    CitySearchWrapper = shallow(<CitySearch locations={locations} />);
+    CitySearchWrapper = shallow(
+      <CitySearch locations={locations} updateEvents={() => {}} />
+    );
   });
 
   test('render text input', () => {

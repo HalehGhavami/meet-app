@@ -8,8 +8,8 @@ describe('<Event /> component', () => {
   beforeAll(() => {
     EventWrapper = shallow(<Event event={mockData[1]} />);
   });
-  test('render Event Title', () => {
-    expect(EventWrapper.find('.event-title')).toHaveLength(1);
+  test('render Event component', () => {
+    expect(EventWrapper.find('.event')).toHaveLength(1);
   });
 
   test('render basic event information', () => {
@@ -17,12 +17,12 @@ describe('<Event /> component', () => {
   });
 
   test('have a show details button', () => {
-    expect(EventWrapper.find('.show-details')).toHaveLength(1);
+    expect(EventWrapper.find('.details-btn')).toHaveLength(1);
   });
 
   test('event details expand on click', () => {
     EventWrapper.setState({ expanded: false });
-    EventWrapper.find('.show-details').simulate('click');
+    EventWrapper.find('.details-btn').simulate('click');
     expect(EventWrapper.state('expanded')).toBe(true);
   });
 });
