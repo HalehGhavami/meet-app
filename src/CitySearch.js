@@ -4,6 +4,7 @@ class CitySearch extends Component {
   state = {
     query: '',
     suggestions: [],
+    showSuggestions: undefined,
   };
 
   // takes the value from the input and updates the state of query based on that value
@@ -15,8 +16,19 @@ class CitySearch extends Component {
     this.setState({
       query: value,
       suggestions,
-      showSuggestions: undefined,
     });
+    if (value === '') {
+      this.setState({
+        suggestions: [],
+        query: '',
+        showSuggestions: false,
+      });
+    } else {
+      return this.setState({
+        query: value,
+        suggestions,
+      });
+    }
   };
   handleItemClicked = (suggestion) => {
     this.setState({
@@ -24,7 +36,7 @@ class CitySearch extends Component {
       showSuggestions: false,
     });
 
-    this.props.updateEvents(suggestion);
+    this.props.updateEvents(suggestion, 0);
   };
 
   render() {
@@ -52,7 +64,7 @@ class CitySearch extends Component {
             </li>
           ))}
           <li onClick={() => this.handleItemClicked('all')}>
-            <b>See all cities</b>
+            <b className="seeAllCities">See all cities</b>
           </li>
         </ul>
       </div>
