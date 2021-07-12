@@ -66,27 +66,27 @@ USER STORY FEATURE 2: As a user, I should be able to show/hide an event's detail
 ```
 Scenario 1: An event element is collapsed by default.
 
-⦁	Given an app and list event element has been loaded
-⦁	When the user hasn't clicked on details button yet
-⦁	Then an event element is collapsed by default.
+⦁	Given the main page is open
+⦁	When the app is rendered
+⦁	Then the user should see a list of collapsed event elements.
 
 ```
 
 ```
 Scenario 2: User can expand an event to see its details.
 
-⦁	Given an app and list event element has been loaded
-⦁	When the user clicks on details button
-⦁	Then an event element will expand to show its details.
+⦁	Given the list of upcoming events is displayed
+⦁	When the user clicks `show details` button on the event element
+⦁	Then the user should see expanded event element with its details
 
 ```
 
 ```
 Scenario 3: User can collapse an event to hide its details.
 
-⦁	Given an app is loaded and event element has been expanded
-⦁	When the user clicks on hide details button
-⦁	Then an event element will collapse to hide its details.
+⦁	Given the user has clicked `show details` on an event element
+⦁	When the user clicks `hide details` on the event element
+⦁	Then the event element will close and the user will see the list of collapsed event elements
 
 ```
 
@@ -96,18 +96,18 @@ USER STORY FEATURE 3: As a user, I should be able to change the number of events
 ```
 Scenario 1: When user hasn’t specified a number, 32 is the default number.
 
-⦁	Given the user hasn't specified the number of events
-⦁	When the app is loaded
-⦁	Then the default number of events to load is 32.
+⦁	Given the main page is open
+⦁	When  the app is rendered
+⦁	Then the app will display 32 events.
 
 ```
 
 ```
 Scenario 2: User can change the number of events they want to see.
 
-⦁	Given the app and events are loaded
-⦁	When the user changes the default number of events to show
-⦁	Then the number of events loaded should change to match the number user chose.
+⦁	Given the list of upcoming events is displayed
+⦁	When the user enters a number into the `number of events` input box
+⦁	Then the user will see the number of events they specified.
 
 ```
 
