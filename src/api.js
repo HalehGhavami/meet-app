@@ -34,6 +34,7 @@ const removeQuery = () => {
 const getEvents = async () => {
   NProgress.start();
 
+  //  allows you to run end-to-end tests using mock API data
   if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
     return mockData;
