@@ -17,7 +17,7 @@ class Event extends Component {
   }
 
   render() {
-    let event = this.props.event;
+    const { event } = this.props;
     return (
       <div className="event">
         <h2 className="event__Overview--name">{event.summary}</h2>
@@ -26,10 +26,19 @@ class Event extends Component {
           <h3 className="event__Overview--localDate">
             start: {event.start.dateTime} - Time Zone: {event.start.timeZone}
           </h3>
-          {this.state.expanded === true && (
-            <p className="event-details">{event.description}</p>
-          )}
         </div>
+        {this.state.expanded && (
+          <div className="event-details">
+            <h2>About event:</h2>
+            <a href={event.htmlLink} target="_blank" rel="noreferrer">
+              <button className="google-btn">
+                See Details on Google Calendar
+              </button>
+            </a>
+            <p className="description">{event.description}</p>
+          </div>
+        )}
+
         <button className="details-btn" onClick={this.toggleExpanded}>
           {!this.state.expanded ? 'Show Details' : 'Hide Details'}
         </button>
