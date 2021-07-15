@@ -36,17 +36,24 @@ input[type='number'] {
   height: 38px;
 }
 
-.city {
+label {
+  font-size: 14px;
+}
+
+.city .event-number-input {
   width: 250px;
 }
 
-.CitySearch {
+.CitySearch,
+.NumberOfEvents {
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
-  max-width: 300px;
+  max-width: 700px;
   margin: auto;
   position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .suggestions {
@@ -54,7 +61,7 @@ input[type='number'] {
   position: absolute;
   z-index: 2;
   align-self: center;
-  margin: 0;
+  margin: 10px;
   top: 43px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
@@ -128,9 +135,23 @@ input[type='number'] {
   font-family: sans-serif;
 }
 
-.Alert {
+/* .Alert {
   position: fixed;
   top: 20px;
+} */
+
+.Alert {
+  left: 0;
+  right: 0;
+  height: 0;
+}
+
+.alert-message {
+  margin: 0;
+}
+
+.EventList {
+  margin-top: 40px;
 }
 
 .data-vis-wrapper {
