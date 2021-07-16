@@ -23,20 +23,20 @@ class Event extends Component {
       <div className="event">
         <h2 className="event__Overview--name">{event.summary}</h2>
         <div className="basic-info">
-          <h2 className="event-location">{event.location}</h2>
-          <h3 className="event__Overview--localDate">
+          <h3 className="event-location">{event.location}</h3>
+          <h4 className="event__Overview--localDate">
             start: {event.start.dateTime} - Time Zone: {event.start.timeZone}
-          </h3>
+          </h4>
         </div>
         {this.state.expanded && (
           <div className="event-details">
-            <h2>About event:</h2>
+            <h3>About event:</h3>
+            <p className="description">{event.description}</p>
             <a href={event.htmlLink} target="_blank" rel="noreferrer">
               <button className="google-btn">
                 See Details on Google Calendar
               </button>
             </a>
-            <p className="description">{event.description}</p>
           </div>
         )}
 

@@ -1,4 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+body {
+  background-color: #f4f0ec;
+  color: #264a45;
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
   padding: 2% 5%;
@@ -70,8 +77,9 @@ label {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
+  background-color: #a8a8a8;
   cursor: default;
+  color: #f4f0ec;
 }
 
 .suggestions > li:last-child {
@@ -80,7 +88,8 @@ label {
 }
 
 .suggestions > li:hover {
-  background-color: #bcdcdb;
+  background-color: #9db7be;
+  color: #264a45;
 }
 
 .event {
@@ -90,6 +99,7 @@ label {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  background-color: #fff;
 }
 
 .details-btn {
@@ -100,6 +110,7 @@ label {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  color: #264a45;
 }
 
 .name {
@@ -184,15 +195,18 @@ label {
   width: 184px;
   height: 42px;
   margin: 1rem;
-  background-color: #4285f4;
+  background-color: #a8a8a8;
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
 .google-btn:hover {
-  box-shadow: 0 0 6px #4285f4;
+  box-shadow: 0 0 6px #a8a8a8;
+  cursor: pointer;
+  background-color: #9db7be;
+  color: #264a45;
 }
 .google-btn:active {
-  background: #1669f2;
+  background: #a8a8a8;
 }
 .google-icon-wrapper {
   position: absolute;
