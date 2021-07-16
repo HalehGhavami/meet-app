@@ -1,14 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:500);
-
-body {
-  background-color: #f4f0ec;
-  color: #264a45;
-  margin: 0;
-  padding: 0;
-}
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:500); */
+@import url(https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap);
 .App {
   text-align: center;
   padding: 2% 5%;
+  background-color: #f4f0ec;
+  color: #264a45;
 }
 
 .App * {
