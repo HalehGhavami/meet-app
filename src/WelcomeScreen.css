@@ -20,16 +20,17 @@
   width: 184px;
   height: 42px;
   margin: 1rem;
-  background-color: #4285f4;
+  background-color: #a8a8a8;
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
 .google-btn:hover {
-  box-shadow: 0 0 6px #4285f4;
+  box-shadow: 0 0 3px #9db7be;
+  cursor: pointer;
 }
 
 .google-btn:active {
-  background: #1669f2;
+  background: #264a45;
 }
 .google-icon-wrapper {
   position: absolute;
@@ -38,7 +39,8 @@
   width: 40px;
   height: 40px;
   border-radius: 2px;
-  background-color: #fff;
+  background-color: #264a45;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
 .google-icon {
   position: absolute;
@@ -47,14 +49,31 @@
   width: 18px;
   height: 18px;
 }
-.btn-text-welcome {
-  float: right;
-  color: #fff;
+.btn-text-welcomeScreen {
+  color: #264a45;
   font-size: 14px;
   letter-spacing: 0.2px;
   font-family: 'Roboto';
-  background-color: #4285f4;
+  background-color: #fff;
   width: 80%;
   height: 100%;
   text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.privacy {
+  display: block;
+  text-decoration: none;
+  color: #494949;
+}
+
+.google-btn-welcomeScreen {
+  width: 184px;
+  height: 42px;
+  margin: 1rem;
+  background-color: #264a45;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 }

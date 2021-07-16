@@ -3,6 +3,7 @@
 .App {
   text-align: center;
   background-color: #f4f0ec;
+  padding: 2% 5%;
   color: #264a45;
 }
 
@@ -173,7 +174,7 @@ label {
   overflow: visible;
 }
 
-.login-button {
+/* .login-button {
   color: #494949;
   text-transform: uppercase;
   text-decoration: none;
@@ -218,7 +219,7 @@ label {
   margin-left: -8px;
   width: 18px;
   height: 18px;
-}
+} */
 .btn-text {
   float: right;
   margin: 11px 11px 0 0;
