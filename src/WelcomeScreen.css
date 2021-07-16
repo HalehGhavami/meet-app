@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
   top: 0;
-  background: white;
+  background: #f4f0ec;
 }
 .login-button {
   color: #494949;
@@ -47,7 +47,7 @@
   width: 18px;
   height: 18px;
 }
-.btn-text {
+.btn-text-welcome {
   float: right;
   color: #fff;
   font-size: 14px;

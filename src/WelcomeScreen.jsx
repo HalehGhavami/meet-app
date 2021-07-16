@@ -22,7 +22,7 @@ o.svg"
               props.getAccessToken();
             }}
             rel="nofollow noopener"
-            class="btn-text"
+            class="btn-text-welcome "
           >
             <b>Sign in with google</b>
           </button>
