@@ -1,8 +1,23 @@
 ### Objective:
 
-- Build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
+Meet App is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events. The serverless function is hosted by the cloud provider AWS.
+
+Meet App alows users to search for events hosted in a specified city. The user can view charts that display how many events will take place in that specified city as well the popularity of event genres in form of a pie chart.
 <br><br>
-See the **hosted project** [here](https://halehghavami.github.io/meet-app/).
+
+### How To Use
+
+- Go to this [homepage](https://halehghavami.github.io/meet-app/)
+- Sign in with a Google Account
+
+### Technologies
+
+- Requires [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com)
+- Written with [React](https://reactjs.org)
+- TDD [Jest](https://jestjs.io)
+- Serverless function [AWS-Lambda](https://aws.amazon.com/lambda/)
+- API [Google Calendar](https://developers.google.com/calendar/)
+
 <br><br>
 Key Features:<br>
 
