@@ -23,6 +23,7 @@ o.svg"
             }}
             rel="nofollow noopener"
             className="btn-text-welcomeScreen"
+            // href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=357748427640-qkauu9ve0v93imrri5upg697a4o3jc9p.apps.googleusercontent.com&redirect_uri=https%3A%2F%2FHalehGhavami.github.io%2Fmeet-app"
           >
             <b>Sign in with google</b>
           </button>
@@ -38,4 +39,5 @@ o.svg"
     </div>
   ) : null;
 }
+
 export default WelcomeScreen;
