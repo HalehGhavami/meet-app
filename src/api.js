@@ -2,35 +2,32 @@ import { mockData } from './mock-data';
 import axios from 'axios';
 import NProgress from 'nprogress';
 
-const extractLocations = (events) => {
-  var extractLocations = events.map((event) => event.location);
-  var locations = [...new Set(extractLocations)];
-  return locations;
-};
-
+// Data Retrieval Functions
 const getEvents = async () => {
   NProgress.start();
 
   //  allows you to run end-to-end tests using mock API data
   if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
-    return mockData;
+    return { events: mockData, locations: extractLocations(mockData) };
   }
 
+  // Returns previously cached data for offline user
   if (!navigator.onLine) {
-    const data = localStorage.getItem('lastEvents');
+    const events = localStorage.getItem('lastEvents');
     NProgress.done();
-    return JSON.parse(data).events;
+    return {
+      events: JSON.parse(events).events,
+      locations: extractLocations(JSON.parse(events).events),
+    };
   }
 
+  // Calls API to retrieve events data
   const token = await getAccessToken();
-
   if (token) {
     removeQuery();
-    const url =
-      'https://hhmvfn3eag.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' +
-      '/' +
-      token;
+    const url = `https://hhmvfn3eag.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
+
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
@@ -38,18 +35,31 @@ const getEvents = async () => {
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
-    return result.data.events;
+    return { events: result.data.events, locations };
   }
 };
 
+const extractLocations = (events) => {
+  var extractLocations = events.map((event) => event.location);
+  var locations = [...new Set(extractLocations)];
+  return locations;
+};
+
+// Authentication & Authorization Functions
 const getAccessToken = async () => {
+  // Looks for pre-existing token in storage & check validity
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
-  if (!accessToken || tokenCheck.error) {
-    await localStorage.removeItem('access_token');
+  // If no token or invalid token, retrieve new token through google authorization
+  if (!accessToken || !tokenCheck) {
+    localStorage.removeItem('access_token'); // Remove invalid token
+
+    // Look for authorization code
     const searchParams = new URLSearchParams(window.location.search);
-    const code = await searchParams.get('code');
+    const code = searchParams.get('code');
+
+    // If no auth code, redirect to Google Auth screen to sign in and retrieve code
     if (!code) {
       const results = await axios.get(
         'https://hhmvfn3eag.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url'
@@ -62,6 +72,7 @@ const getAccessToken = async () => {
   return accessToken;
 };
 
+// Checks validity of access token
 const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
@@ -69,9 +80,26 @@ const checkToken = async (accessToken) => {
     .then((res) => res.json())
     .catch((error) => error.json());
 
-  return result;
+  return result.error ? false : true;
 };
 
+// Gets new token from AWS Lamba if there is no token or invalid token
+const getToken = async (code) => {
+  const encodeCode = encodeURIComponent(code);
+  const { access_token } = await fetch(
+    `https://hhmvfn3eag.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => error);
+
+  access_token && localStorage.setItem('access_token', access_token);
+
+  return access_token;
+};
+
+// Removes code from URL after it is used
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
     var newurl =
@@ -84,23 +112,6 @@ const removeQuery = () => {
     newurl = window.location.protocol + '//' + window.location.host;
     window.history.pushState('', '', newurl);
   }
-};
-
-const getToken = async (code) => {
-  const encodeCode = encodeURIComponent(code);
-  const { access_token } = await fetch(
-    'https://hhmvfn3eag.execute-api.eu-central-1.amazonaws.com/dev/api/token' +
-      '/' +
-      encodeCode
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => error);
-
-  access_token && localStorage.setItem('access_token', access_token);
-
-  return access_token;
 };
 
 export { getEvents, getAccessToken, extractLocations, getToken, checkToken };
