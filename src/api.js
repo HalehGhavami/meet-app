@@ -13,9 +13,6 @@ const getEvents = async () => {
   }
 
   // Returns previously cached data for offline user
-
-  const token = await getAccessToken();
-
   if (!navigator.onLine) {
     const events = localStorage.getItem('lastEvents');
     NProgress.done();
@@ -26,6 +23,7 @@ const getEvents = async () => {
   }
 
   // Calls API to retrieve events data
+  const token = await getAccessToken();
 
   if (token) {
     removeQuery();
