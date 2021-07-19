@@ -4,7 +4,6 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents } from './api';
 import { OfflineAlert } from './Alert';
-// import WelcomeScreen from './WelcomeScreen';
 import './App.css';
 import './nprogress.css';
 
@@ -15,26 +14,10 @@ class App extends Component {
     currentLocation: 'all',
     numberOfEvents: 32,
     warningText: '',
-    // tokenCheck: false,
-    // showWelcomeScreen: undefined,
   };
 
   async componentDidMount() {
     this.mounted = true;
-    // const accessToken = localStorage.getItem('access_token');
-    // const validToken =
-    //   accessToken !== null ? await checkToken(accessToken) : false;
-    // this.setState({ tokenCheck: validToken });
-    // if (validToken === true) this.updateEvents();
-    // const searchParams = new URLSearchParams(window.location.search);
-    // const code = searchParams.get('code');
-
-    // this.mounted = true;
-    // if (code && this.mounted === true && validToken === false) {
-    //   this.setState({ tokenCheck: true });
-    //   this.updateEvents();
-    // }
-
     if (!navigator.onLine) {
       this.setState({
         warningText:
@@ -56,12 +39,6 @@ class App extends Component {
   updateEvents = (location, eventCount) => {
     const { currentLocation, numberOfEvents } = this.state;
 
-    // if (location) {
-    //   // If user selects a location from input
-    //   this.setState({
-    //     warningText: 'Please wait, events are loading...',
-    //   });
-
     // If user selects a location from input
     if (location) {
       getEvents().then((response) => {
@@ -75,7 +52,6 @@ class App extends Component {
           events: events,
           currentLocation: location,
           locations: response.locations,
-          // warningText: '',
         });
       });
     } else {
@@ -94,49 +70,40 @@ class App extends Component {
             events: events,
             numberOfEvents: eventCount,
             locations: response.locations,
-            // warningText: '',
           });
         }
       });
     }
   };
+  // Gets total number of events happening in each city
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      // (', ') -> shorten the location and remove any unnecessary information and shift() array function to get the first element in the array(name od city)
+      const city = location.split(', ').shift();
+      return { city, number };
+    });
+    return data;
+  };
 
   render() {
-    // if (this.state.showWelcomeScreen === undefined)
-    //   return <div className="App" />;
     const { numberOfEvents, events, locations, warningText } = this.state;
-    // return tokenCheck === false ? (
-    //   <div className="App">
-    //     <WelcomeScreen
-    //       getAccessToken={() => {
-    //         getAccessToken();
-    //       }}
-    //     />
-    //   </div>
-    // ) : (
 
     return (
       <div className="App">
         <OfflineAlert text={warningText} />
         <h1>Meet App</h1>
         <h4>Choose your nearest city</h4>
-        <CitySearch
-          locations={locations}
-          updateEvents={this.updateEvents}
-          // numberOfEvents={this.state.numberOfEvents}
-        />
+        <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents}
         />
 
         <EventList events={events} />
-        {/* <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => {
-            getAccessToken();
-          }}
-        /> */}
       </div>
     );
   }
