@@ -13,6 +13,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import logo from './assets/images/logo-meet-app.png';
 import './App.css';
 import './nprogress.css';
 
@@ -103,8 +104,8 @@ class App extends Component {
 
     return (
       <div className="App">
+        <img src={logo} alt="Logo" className="logo-web" />
         <OfflineAlert text={warningText} />
-        <h1>Meet App</h1>
         <h4>Choose your nearest city</h4>
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents
