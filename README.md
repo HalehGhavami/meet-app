@@ -1,3 +1,5 @@
+![App Showcase Gif](/meet-app-showcase.gif)
+
 ### Objective:
 
 Meet App is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events. The serverless function is hosted by the cloud provider AWS.
