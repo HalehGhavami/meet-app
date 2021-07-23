@@ -1,8 +1,6 @@
 # Meet App
 
-<p align="center">
 ![showcase gif](Meet-app-showcase.gif)
- </p>
 
 ### Objective:
 
